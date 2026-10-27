@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, session
 
 template_dir = os.path.abspath(os.path.dirname(__file__))
