@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GK Quiz</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; margin: 0; padding: 20px; }
+        .container { max-width: 700px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h2 { color: #333; }
+        .question-box { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .options label { display: block; margin: 8px 0; cursor: pointer; }
+        button { background-color: #007BFF; color: white; border: none; padding: 12px 25px; border-radius: 4px; cursor: pointer; font-size: 16px; display: block; width: 100%; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Hello, {{ name }}! Answer all questions:</h2>
+        <form method="POST">
+            {% for q in questions %}
+            <div class="question-box">
+                <p><b>Q{{ loop.index }}: {{ q.question }}</b></p>
+                <div class="options">
+                    {% for opt in q.options %}
+                    <label>
+                        <!-- Same name attribute ensures only ONE option can be selected -->
+                        <input type="radio" name="question_{{ q.id }}" value="{{ opt }}" required>
+                        {{ opt }}
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+            <button type="submit">Submit Quiz</button>
+        </form>
+    </div>
+</body>
+</html>

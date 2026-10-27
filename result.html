@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Result</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 350px; text-align: center; }
+        h1 { color: #4CAF50; }
+        a { display: inline-block; margin-top: 20px; background-color: #007BFF; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; }
+        a:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Quiz Completed!</h2>
+        <p><b>Student Name:</b> {{ name }}</p>
+        <h1>Your Score:</h1>
+        <h2>{{ score }} / {{ total }}</h2>
+        <p>{% if score >= 7 %}Excellent Work! 🎉{% elif score >= 4 %}Good Job! 👍{% else %}Keep Practicing! 💪{% endif %}</p>
+        <a href="{{ url_for('logout') }}">Take Quiz Again</a>
+    </div>
+</body>
+</html>
