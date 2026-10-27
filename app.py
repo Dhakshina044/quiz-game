@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 
-app = Flask(__name__)
-app.secret_key = 'your_secret_key_here' 
+template_dir = os.path.abspath(os.path.dirname(__file__))
+app = Flask(__name__, template_folder=os.path.join(template_dir, 'templates'))
+app.secret_key = 'your_secret_key_here'
 
 # 10 GK Questions with Correct Answers
 QUESTIONS = [
